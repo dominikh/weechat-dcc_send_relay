@@ -24,12 +24,12 @@ def dcc_send_cb(data, signal, server, args)
   target_nick   = Weechat.config_get_plugin("relay_nick")
 
   if target_nick.empty?
-    # TODO output error
+    Weechat.print("", "Cannot relay DCC SEND without a configured target nick.")
     return args
   end
 
   if server_buffer.empty?
-    # TODO output error
+    Weechat.print("", "Couldn't find a server buffer for '#{target_server}'.")
     return args
   end
 
